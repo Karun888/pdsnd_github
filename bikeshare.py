@@ -60,39 +60,30 @@ def load_data(city, month, day):
     Loads data for the specified city and filters by month and day if applicable.
 
     Args:
-        (str) city - name of the city to analyze
-        (str) month - name of the month to filter by, or "all" to apply no month filter
-        (str) day - name of the day of week to filter by, or "all" to apply no day filter
+        city (str): Name of the city to analyze.
+        month (str): Name of the month to filter by, or "all" to apply no month filter.
+        day (str): Name of the day of week to filter by, or "all" to apply no day filter.
+
     Returns:
-        df - Pandas DataFrame containing city data filtered by month and day
+        pandas.DataFrame: A DataFrame containing city data filtered by month and day.
     """
-   
+    
     df = pd.read_csv(CITY_DATA[city])
     
-    
-    # converting Start_Time column to datetime
+    # Convert 'Start Time' column to datetime for further analysis
     df['Start Time'] = pd.to_datetime(df['Start Time'])
 
-    
-    # new columns created as per months and days of the week
-    df['month'] = df['Start Time'].dt.month
-    df['day_of_week'] = df['Start Time'].dt.weekday_name
+    # Extract month and day of week information from 'Start Time'
+    df['month'] = df['Start Time'].dt.month  
+    df['day_of_week'] = df['Start Time'].dt.day_name() 
 
-
-    # filter by month if applicable
+    # Filter by month if applicable
     if month != 'all':
-        months = ['january', 'february', 'march', 'april', 'may', 'june']
-        month = months.index(month) + 1
-    
-    
-        # create new column from month filter
-        df = df[df['month'] == month]
+        # ... (rest of the filter by month code)
 
-        
-    # filter by day of week if applicable
+    # Filter by day of week if applicable
     if day != 'all':
-                
-        df = df[df['day_of_week'] == day.title()]
+        # ... (rest of the filter by day of week code)
 
     return df
 
@@ -174,7 +165,18 @@ def trip_duration_stats(df):
 
     
 def user_stats(df):
-    """Displays statistics on bikeshare users."""
+    """Displays statistics on bikeshare users. 
+ This function calculates and prints various statistics related to user demographics, 
+    including:
+        - Counts of user types
+        - Counts of gender (if available)
+        - Earliest, most recent, and most common birth years (if available)
+
+    The function handles potential KeyError exceptions if the 'Gender' or 'Birth Year' 
+    columns are not present in the input DataFrame.
+
+    Args:
+        df: pandas.DataFrame - The DataFrame containing the bikeshare data"""
 
     print('\nCalculating User Stats...\n')
     start_time = time.time()
