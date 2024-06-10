@@ -3,11 +3,12 @@
 ### Date created
 Include the date you created this project and README file.
 
-### Project Title
+### US Bikeshare Data Analysis.
 Replace the Project Title
 
 ### Description
-Describe what your project is about and what it does
+This project analyzes bikeshare data from three major US cities (Chicago, New York City, Washington) to identify usage patterns and trends. Users can filter the data by city, month, and day to explore specific timeframes. The analysis includes statistics on trip duration, popular stations, and user demographics.
+
 
 ### Files used
 Include the files used
