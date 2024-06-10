@@ -172,7 +172,18 @@ def trip_duration_stats(df):
 
     
 def user_stats(df):
-    """Displays statistics on bikeshare users."""
+    """Displays statistics on bikeshare users. 
+ This function calculates and prints various statistics related to user demographics, 
+    including:
+        - Counts of user types
+        - Counts of gender (if available)
+        - Earliest, most recent, and most common birth years (if available)
+
+    The function handles potential KeyError exceptions if the 'Gender' or 'Birth Year' 
+    columns are not present in the input DataFrame.
+
+    Args:
+        df: pandas.DataFrame - The DataFrame containing the bikeshare data"""
 
     print('\nCalculating User Stats...\n')
     start_time = time.time()
