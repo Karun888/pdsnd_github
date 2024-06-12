@@ -231,18 +231,17 @@ def user_stats(df):
  
     
 def main():
+    """Main function to control the flow of the bike share data analysis program."""
     while True:
-        city, month, day = get_filters()
+        city, month, day = get_filters()  # Get user's filtering preferences
+
+        # Load and filter the data based on user input
         df = load_data(city, month, day)
 
-        time_stats(df)
-        station_stats(df)
-        trip_duration_stats(df)
-        user_stats(df)
+        # Perform various analyses on the filtered data
+        time_stats(df)         # Analyze and display time-based statistics
+        station_stats(df)      #
 
-        restart = input('\nWould you like to Restart? Enter yes or no.\n')
-        if restart.lower() != 'yes':
-            break
 
 
             
